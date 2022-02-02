@@ -16,6 +16,7 @@ using UMS.Configurations;
 using UMS.Data;
 using UMS.IRepository;
 using UMS.Repository;
+using UMS.Services;
 
 namespace UMS
 {
@@ -36,6 +37,10 @@ namespace UMS
                 options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection"))
             );
 
+            services.AddAuthentication();
+            services.ConfigureIdentity();
+            services.ConfigureJwt(Configuration);
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -49,6 +54,7 @@ namespace UMS
             services.AddAutoMapper(typeof(MapperInitializer));
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthManager, AuthManager>();
 
             services.AddSwaggerGen(c =>
             {
@@ -72,7 +78,7 @@ namespace UMS
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

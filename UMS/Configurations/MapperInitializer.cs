@@ -8,6 +8,7 @@ namespace UMS.Configurations
     {
         public MapperInitializer()
         {
+            CreateMap<ApiUser, CreateUserDto>().ReverseMap();
             CreateMap<LeaveRequest, LeaveRequestDto>().ReverseMap();
             CreateMap<LeaveRequest, CreateLeaveRequestDto>().ReverseMap();
             CreateMap<LeaveType, LeaveTypeDto>().ReverseMap();

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UMS.Data;
 
 namespace UMS.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220201134358_AddedIdentity")]
+    partial class AddedIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,29 +46,6 @@ namespace UMS.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "c91e2715-f6d1-4865-9c91-48210911fbba",
-                            ConcurrencyStamp = "1fda5c48-edf0-4b35-b020-55885a9aeda6",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "3d4dc1f7-1b8d-46de-8904-1143669bb93c",
-                            ConcurrencyStamp = "27152696-d595-4c16-af92-45b11abf432c",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
-                        },
-                        new
-                        {
-                            Id = "7452daaf-ebe8-49c1-a1ee-59e65ca6f54f",
-                            ConcurrencyStamp = "2f6232ad-cd34-453b-a11b-ef72e8e4f6ac",
-                            Name = "Employee",
-                            NormalizedName = "EMPLOYEE"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -308,32 +287,32 @@ namespace UMS.Migrations
                         new
                         {
                             Id = 1,
-                            End = new DateTime(2022, 2, 3, 11, 23, 20, 597, DateTimeKind.Local).AddTicks(2861),
+                            End = new DateTime(2022, 2, 2, 19, 13, 57, 944, DateTimeKind.Local).AddTicks(2264),
                             LeaveStatusId = 1,
                             LeaveTypeId = 1,
                             Note = "I am down with fever.",
                             Remarks = "Approved",
-                            Start = new DateTime(2022, 2, 2, 11, 23, 20, 591, DateTimeKind.Local).AddTicks(2418)
+                            Start = new DateTime(2022, 2, 1, 19, 13, 57, 943, DateTimeKind.Local).AddTicks(2825)
                         },
                         new
                         {
                             Id = 2,
-                            End = new DateTime(2022, 2, 17, 11, 23, 20, 597, DateTimeKind.Local).AddTicks(4716),
+                            End = new DateTime(2022, 2, 16, 19, 13, 57, 944, DateTimeKind.Local).AddTicks(4987),
                             LeaveStatusId = 2,
                             LeaveTypeId = 3,
                             Note = "I am going on a trip to Maldives",
                             Remarks = "Denied",
-                            Start = new DateTime(2022, 2, 2, 11, 23, 20, 597, DateTimeKind.Local).AddTicks(4708)
+                            Start = new DateTime(2022, 2, 1, 19, 13, 57, 944, DateTimeKind.Local).AddTicks(4975)
                         },
                         new
                         {
                             Id = 3,
-                            End = new DateTime(2022, 2, 4, 11, 23, 20, 597, DateTimeKind.Local).AddTicks(4726),
+                            End = new DateTime(2022, 2, 3, 19, 13, 57, 944, DateTimeKind.Local).AddTicks(5005),
                             LeaveStatusId = 3,
                             LeaveTypeId = 2,
                             Note = "Need couple of day off for personal reasons",
                             Remarks = "Approved",
-                            Start = new DateTime(2022, 2, 2, 11, 23, 20, 597, DateTimeKind.Local).AddTicks(4725)
+                            Start = new DateTime(2022, 2, 1, 19, 13, 57, 944, DateTimeKind.Local).AddTicks(5004)
                         });
                 });
 
