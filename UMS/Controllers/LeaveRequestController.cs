@@ -93,13 +93,14 @@ namespace UMS.Controllers
             }
         }
 
-        /*[HttpPut]
+        [Authorize(Roles = "Manager")]
+        [HttpPatch]
         [Route("review")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> ReviewLeaveRequest(int id, [FromBody] UpdateLeaveRequestDto leaveRequestDto)
         {
-            if (!ModelState.IsValid || id < 1)
+            if (!ModelState.IsValid)
             {
                 _logger.LogError($"Invalid UPDATE attempt in {nameof(ReviewLeaveRequest)}");
                 return BadRequest(ModelState);
@@ -107,7 +108,7 @@ namespace UMS.Controllers
 
             try
             {
-                var leaveRequest = await _unitOfWork.LeaveRequests.Get(x => x.Id == id);
+                var leaveRequest = await _unitOfWork.LeaveRequests.Get(x => x.Id == leaveRequestDto.Id);
                 if (leaveRequest == null)
                 {
                     _logger.LogError($"Invalid UPDATE attempt in {nameof(ReviewLeaveRequest)}");
@@ -125,6 +126,6 @@ namespace UMS.Controllers
                 _logger.LogError(ex, $"Something went wrong in the {nameof(ReviewLeaveRequest)}");
                 return StatusCode(500, "Internal Server Error. Please try again later.");
             }
-        }*/
+        }
     }
 }

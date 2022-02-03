@@ -743,3 +743,172 @@ Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Ambiguous HTTP meth
    at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
 2022-02-03 18:16:56.089 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 500 - text/plain 110.7736ms
+2022-02-03 18:25:27.701 +05:30 [INF] Application starting.
+2022-02-03 18:25:28.820 +05:30 [INF] User profile is available. Using 'C:\Users\Bashwara\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-02-03 18:25:29.274 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-03 18:25:29.275 +05:30 [INF] Hosting environment: Development
+2022-02-03 18:25:29.275 +05:30 [INF] Content root path: D:\Projects\dotnet_projects\UMS\UMS
+2022-02-03 18:25:29.318 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:25:29.318 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger - -
+2022-02-03 18:25:29.445 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger - - - 301 - - 128.7517ms
+2022-02-03 18:25:29.489 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:25:30.247 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 931.7411ms
+2022-02-03 18:25:30.248 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 759.2120ms
+2022-02-03 18:25:30.349 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - -
+2022-02-03 18:25:30.456 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 105.4959ms
+2022-02-03 18:25:30.622 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - -
+2022-02-03 18:25:30.843 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 220.9708ms
+2022-02-03 18:27:11.315 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44324/api/Account/login application/json 60
+2022-02-03 18:27:11.578 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2022-02-03 18:27:11.619 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+2022-02-03 18:27:11.621 +05:30 [INF] Executing endpoint 'UMS.Controllers.AccountController.Login (UMS)'
+2022-02-03 18:27:11.666 +05:30 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(UMS.Models.LoginUserDto) on controller UMS.Controllers.AccountController (UMS).
+2022-02-03 18:27:12.039 +05:30 [INF] Login attempt for sam@example.com
+2022-02-03 18:27:12.805 +05:30 [INF] Entity Framework Core 5.0.13 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-02-03 18:27:13.414 +05:30 [INF] Executed DbCommand (45ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-02-03 18:27:13.526 +05:30 [WRN] Invalid password for user.
+2022-02-03 18:27:13.533 +05:30 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-02-03 18:27:13.583 +05:30 [INF] Executed action UMS.Controllers.AccountController.Login (UMS) in 1913.3237ms
+2022-02-03 18:27:13.584 +05:30 [INF] Executed endpoint 'UMS.Controllers.AccountController.Login (UMS)'
+2022-02-03 18:27:13.588 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44324/api/Account/login application/json 60 - 401 162 application/problem+json;+charset=utf-8 2273.6071ms
+2022-02-03 18:27:20.465 +05:30 [INF] Request starting HTTP/1.1 POST https://localhost:44324/api/Account/login application/json 60
+2022-02-03 18:27:20.468 +05:30 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2022-02-03 18:27:20.468 +05:30 [INF] Bearer was not authenticated. Failure message: IDX10223: Lifetime validation failed. The token is expired. ValidTo: 'System.DateTime', Current time: 'System.DateTime'.
+2022-02-03 18:27:20.469 +05:30 [INF] Executing endpoint 'UMS.Controllers.AccountController.Login (UMS)'
+2022-02-03 18:27:20.469 +05:30 [INF] Route matched with {action = "Login", controller = "Account"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(UMS.Models.LoginUserDto) on controller UMS.Controllers.AccountController (UMS).
+2022-02-03 18:27:20.470 +05:30 [INF] Login attempt for sam@example.com
+2022-02-03 18:27:20.505 +05:30 [INF] Entity Framework Core 5.0.13 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-02-03 18:27:20.515 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[Address], [a].[ConcurrencyStamp], [a].[DateOfBirth], [a].[Email], [a].[EmailConfirmed], [a].[FirstName], [a].[Gender], [a].[LastName], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-02-03 18:27:20.590 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2022-02-03 18:27:20.623 +05:30 [INF] Executing AcceptedResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-02-03 18:27:20.629 +05:30 [INF] Executed action UMS.Controllers.AccountController.Login (UMS) in 159.8571ms
+2022-02-03 18:27:20.629 +05:30 [INF] Executed endpoint 'UMS.Controllers.AccountController.Login (UMS)'
+2022-02-03 18:27:20.629 +05:30 [INF] Request finished HTTP/1.1 POST https://localhost:44324/api/Account/login application/json 60 - 202 340 application/json;+charset=utf-8 164.7461ms
+2022-02-03 18:29:36.376 +05:30 [INF] Request starting HTTP/1.1 PUT https://localhost:44324/api/LeaveRequest/review application/json 84
+2022-02-03 18:29:36.395 +05:30 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Manager)
+2022-02-03 18:29:36.401 +05:30 [INF] AuthenticationScheme: Bearer was challenged.
+2022-02-03 18:29:36.402 +05:30 [INF] Request finished HTTP/1.1 PUT https://localhost:44324/api/LeaveRequest/review application/json 84 - 401 - - 25.5069ms
+2022-02-03 18:29:54.206 +05:30 [INF] Request starting HTTP/1.1 PUT https://localhost:44324/api/LeaveRequest/review application/json 84
+2022-02-03 18:29:54.229 +05:30 [INF] Successfully validated the token.
+2022-02-03 18:29:54.231 +05:30 [INF] Authorization was successful.
+2022-02-03 18:29:54.231 +05:30 [INF] Executing endpoint 'UMS.Controllers.LeaveRequestController.ReviewLeaveRequest (UMS)'
+2022-02-03 18:29:54.235 +05:30 [INF] Route matched with {action = "ReviewLeaveRequest", controller = "LeaveRequest"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ReviewLeaveRequest(Int32, UMS.Models.UpdateLeaveRequestDto) on controller UMS.Controllers.LeaveRequestController (UMS).
+2022-02-03 18:29:54.258 +05:30 [INF] Entity Framework Core 5.0.13 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-02-03 18:29:54.271 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__leaveRequestDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[Id], [l].[End], [l].[LeaveStatusId], [l].[LeaveTypeId], [l].[Note], [l].[Remarks], [l].[Start], [l].[UserId]
+FROM [LeaveRequests] AS [l]
+WHERE [l].[Id] = @__leaveRequestDto_Id_0
+2022-02-03 18:29:54.460 +05:30 [ERR] Something went wrong in the ReviewLeaveRequest
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+UpdateLeaveRequestDto -> LeaveRequest
+UMS.Models.UpdateLeaveRequestDto -> UMS.Data.LeaveRequest
+   at lambda_method252(Closure , UpdateLeaveRequestDto , LeaveRequest , ResolutionContext )
+   at UMS.Controllers.LeaveRequestController.ReviewLeaveRequest(Int32 id, UpdateLeaveRequestDto leaveRequestDto) in D:\Projects\dotnet_projects\UMS\UMS\Controllers\LeaveRequestController.cs:line 118
+2022-02-03 18:29:54.483 +05:30 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2022-02-03 18:29:54.484 +05:30 [INF] Executed action UMS.Controllers.LeaveRequestController.ReviewLeaveRequest (UMS) in 248.4038ms
+2022-02-03 18:29:54.484 +05:30 [INF] Executed endpoint 'UMS.Controllers.LeaveRequestController.ReviewLeaveRequest (UMS)'
+2022-02-03 18:29:54.485 +05:30 [INF] Request finished HTTP/1.1 PUT https://localhost:44324/api/LeaveRequest/review application/json 84 - 500 - text/plain;+charset=utf-8 278.4770ms
+2022-02-03 18:32:06.917 +05:30 [INF] Application starting.
+2022-02-03 18:32:07.792 +05:30 [INF] User profile is available. Using 'C:\Users\Bashwara\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-02-03 18:32:08.060 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-03 18:32:08.060 +05:30 [INF] Hosting environment: Development
+2022-02-03 18:32:08.060 +05:30 [INF] Content root path: D:\Projects\dotnet_projects\UMS\UMS
+2022-02-03 18:32:08.102 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:32:08.102 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger - -
+2022-02-03 18:32:08.173 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger - - - 301 - - 73.2830ms
+2022-02-03 18:32:08.182 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:32:08.360 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 177.5777ms
+2022-02-03 18:32:08.360 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 260.8267ms
+2022-02-03 18:32:08.369 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - -
+2022-02-03 18:32:08.382 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 9.9633ms
+2022-02-03 18:32:08.517 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - -
+2022-02-03 18:32:08.680 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 163.1781ms
+2022-02-03 18:32:16.151 +05:30 [INF] Request starting HTTP/1.1 PUT https://localhost:44324/api/LeaveRequest/review application/json 84
+2022-02-03 18:32:16.463 +05:30 [INF] Successfully validated the token.
+2022-02-03 18:32:16.468 +05:30 [INF] Authorization was successful.
+2022-02-03 18:32:16.469 +05:30 [INF] Executing endpoint 'UMS.Controllers.LeaveRequestController.ReviewLeaveRequest (UMS)'
+2022-02-03 18:32:16.514 +05:30 [INF] Route matched with {action = "ReviewLeaveRequest", controller = "LeaveRequest"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ReviewLeaveRequest(Int32, UMS.Models.UpdateLeaveRequestDto) on controller UMS.Controllers.LeaveRequestController (UMS).
+2022-02-03 18:32:17.630 +05:30 [INF] Entity Framework Core 5.0.13 initialized 'DatabaseContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-02-03 18:32:18.211 +05:30 [INF] Executed DbCommand (42ms) [Parameters=[@__leaveRequestDto_Id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[Id], [l].[End], [l].[LeaveStatusId], [l].[LeaveTypeId], [l].[Note], [l].[Remarks], [l].[Start], [l].[UserId]
+FROM [LeaveRequests] AS [l]
+WHERE [l].[Id] = @__leaveRequestDto_Id_0
+2022-02-03 18:32:18.392 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p7='?' (DbType = Int32), @p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (DbType = DateTime2), @p6='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [LeaveRequests] SET [End] = @p0, [LeaveStatusId] = @p1, [LeaveTypeId] = @p2, [Note] = @p3, [Remarks] = @p4, [Start] = @p5, [UserId] = @p6
+WHERE [Id] = @p7;
+SELECT @@ROWCOUNT;
+2022-02-03 18:32:18.416 +05:30 [INF] Executing HttpStatusCodeResult, setting HTTP status code 204
+2022-02-03 18:32:18.420 +05:30 [INF] Executed action UMS.Controllers.LeaveRequestController.ReviewLeaveRequest (UMS) in 1901.8808ms
+2022-02-03 18:32:18.421 +05:30 [INF] Executed endpoint 'UMS.Controllers.LeaveRequestController.ReviewLeaveRequest (UMS)'
+2022-02-03 18:32:18.425 +05:30 [INF] Request finished HTTP/1.1 PUT https://localhost:44324/api/LeaveRequest/review application/json 84 - 204 - - 2274.6457ms
+2022-02-03 18:50:50.566 +05:30 [INF] Application starting.
+2022-02-03 18:50:51.411 +05:30 [INF] User profile is available. Using 'C:\Users\Bashwara\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-02-03 18:50:51.681 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-03 18:50:51.681 +05:30 [INF] Hosting environment: Development
+2022-02-03 18:50:51.681 +05:30 [INF] Content root path: D:\Projects\dotnet_projects\UMS\UMS
+2022-02-03 18:50:51.724 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:50:51.724 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger - -
+2022-02-03 18:50:51.797 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:50:51.799 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger - - - 301 - - 77.6865ms
+2022-02-03 18:50:51.966 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 169.6474ms
+2022-02-03 18:50:51.966 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 245.6598ms
+2022-02-03 18:50:51.976 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - -
+2022-02-03 18:50:51.985 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 6.0321ms
+2022-02-03 18:50:52.124 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - -
+2022-02-03 18:50:52.262 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 137.8940ms
+2022-02-03 18:51:46.456 +05:30 [INF] Application starting.
+2022-02-03 18:51:47.288 +05:30 [INF] User profile is available. Using 'C:\Users\Bashwara\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-02-03 18:51:47.546 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-03 18:51:47.546 +05:30 [INF] Hosting environment: Development
+2022-02-03 18:51:47.546 +05:30 [INF] Content root path: D:\Projects\dotnet_projects\UMS\UMS
+2022-02-03 18:51:47.586 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger - -
+2022-02-03 18:51:47.586 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:51:47.661 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger - - - 301 - - 77.6779ms
+2022-02-03 18:51:47.670 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:51:47.839 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 255.9319ms
+2022-02-03 18:51:47.839 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 169.4282ms
+2022-02-03 18:51:47.845 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - -
+2022-02-03 18:51:47.857 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 8.3762ms
+2022-02-03 18:51:47.987 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - -
+2022-02-03 18:51:48.118 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 131.4324ms
+2022-02-03 18:52:31.948 +05:30 [INF] Application starting.
+2022-02-03 18:52:32.947 +05:30 [INF] User profile is available. Using 'C:\Users\Bashwara\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-02-03 18:52:33.255 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-03 18:52:33.255 +05:30 [INF] Hosting environment: Development
+2022-02-03 18:52:33.255 +05:30 [INF] Content root path: D:\Projects\dotnet_projects\UMS\UMS
+2022-02-03 18:52:33.296 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:52:33.296 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger - -
+2022-02-03 18:52:33.381 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger - - - 301 - - 85.1333ms
+2022-02-03 18:52:33.387 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 18:52:33.566 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 272.2779ms
+2022-02-03 18:52:33.571 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 184.4819ms
+2022-02-03 18:52:33.573 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - -
+2022-02-03 18:52:33.600 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 16.6866ms
+2022-02-03 18:52:33.736 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - -
+2022-02-03 18:52:33.951 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 215.6448ms
