@@ -24,9 +24,12 @@ namespace UMS.Data
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new UserRoleConfiguration());
             builder.ApplyConfiguration(new LeaveTypeConfiguration());
             builder.ApplyConfiguration(new LeaveStatusConfiguration());
             builder.ApplyConfiguration(new LeaveRequestConfiguration());
+            builder.ApplyConfiguration(new LeaveAllocationConfiguration());
         }
     }
 }

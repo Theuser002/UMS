@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace UMS.Models
 {
@@ -8,6 +9,7 @@ namespace UMS.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }

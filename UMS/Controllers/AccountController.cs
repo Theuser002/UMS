@@ -32,9 +32,11 @@ namespace UMS.Controllers
             _authManager = authManager;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [Route("register")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Register([FromBody] CreateUserDto createUserDto)
         {
             _logger.LogInformation($"Registration attempt for {createUserDto.Email}");
@@ -72,6 +74,8 @@ namespace UMS.Controllers
 
         [HttpPost]
         [Route("login")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Login([FromBody] LoginUserDto loginUserDto)
         {
             _logger.LogInformation($"Login attempt for {loginUserDto.Email}");

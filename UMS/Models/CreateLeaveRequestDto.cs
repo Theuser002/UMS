@@ -11,12 +11,11 @@ namespace UMS.Models
         [Required]
         public DateTime End { get; set; }
         public string Note { get; set; }
-        public string Remarks { get; set; }
-
+        
         [Required]
         public int LeaveTypeId { get; set; }
 
         [Required]
-        public int LeaveStatusId { get; set; }
+        public string UserId { get; set; }
     }
 }

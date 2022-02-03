@@ -34,7 +34,7 @@ namespace UMS
         {
 
             services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("mssqlConnection"))
+                options.UseSqlServer(Configuration.GetConnectionString("sqlServer"))
             );
 
             services.AddAuthentication();
