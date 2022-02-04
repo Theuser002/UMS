@@ -46,30 +46,22 @@ namespace UMS.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
-            {
-                var newUser = _mapper.Map<ApiUser>(createUserDto);
-                newUser.UserName = createUserDto.Email;
-                var createUser = await _userManager.CreateAsync(newUser, createUserDto.Password);
+            var newUser = _mapper.Map<ApiUser>(createUserDto);
+            newUser.UserName = createUserDto.Email;
+            var createUser = await _userManager.CreateAsync(newUser, createUserDto.Password);
 
-                if (!createUser.Succeeded)
+            if (!createUser.Succeeded)
+            {
+                foreach (var error in createUser.Errors)
                 {
-                    foreach (var error in createUser.Errors)
-                    {
-                        ModelState.AddModelError(error.Code, error.Description);
-                    }
-                    return BadRequest(ModelState);
+                    ModelState.AddModelError(error.Code, error.Description);
                 }
+                return BadRequest(ModelState);
+            }
 
-                await _userManager.AddToRoleAsync(newUser, createUserDto.Role);
+            await _userManager.AddToRoleAsync(newUser, createUserDto.Role);
               
-                return Accepted();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(Register)}");
-                return StatusCode(500, "Internal Server Error. Please try again later.");
-            }
+            return Accepted();
         }
 
         [HttpPost]
@@ -85,20 +77,12 @@ namespace UMS.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
+            if(!await _authManager.ValidateUser(loginUserDto))
             {
-                if(!await _authManager.ValidateUser(loginUserDto))
-                {
-                    return Unauthorized();
-                }
+                return Unauthorized();
+            }
 
-                return Accepted(new { Token = await _authManager.CreateToken() });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(Login)}");
-                return StatusCode(500, "Internal Server Error. Please try again later.");
-            }
+            return Accepted(new { Token = await _authManager.CreateToken() });
         }
     } 
 }

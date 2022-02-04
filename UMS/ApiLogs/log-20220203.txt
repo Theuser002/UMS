@@ -912,3 +912,18 @@ SELECT @@ROWCOUNT;
 2022-02-03 18:52:33.600 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 16.6866ms
 2022-02-03 18:52:33.736 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - -
 2022-02-03 18:52:33.951 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 215.6448ms
+2022-02-03 19:20:13.042 +05:30 [INF] Application starting.
+2022-02-03 19:20:13.861 +05:30 [INF] User profile is available. Using 'C:\Users\Bashwara\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-02-03 19:20:14.132 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2022-02-03 19:20:14.132 +05:30 [INF] Hosting environment: Development
+2022-02-03 19:20:14.133 +05:30 [INF] Content root path: D:\Projects\dotnet_projects\UMS\UMS
+2022-02-03 19:20:14.177 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger - -
+2022-02-03 19:20:14.181 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 19:20:14.262 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/index.html - -
+2022-02-03 19:20:14.263 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger - - - 301 - - 87.8583ms
+2022-02-03 19:20:14.450 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 276.3215ms
+2022-02-03 19:20:14.450 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/index.html - - - 200 - text/html;charset=utf-8 188.4508ms
+2022-02-03 19:20:14.467 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - -
+2022-02-03 19:20:14.483 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 11.2574ms
+2022-02-03 19:20:14.604 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - -
+2022-02-03 19:20:14.768 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44324/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 163.9285ms

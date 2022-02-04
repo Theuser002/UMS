@@ -26,24 +26,15 @@ namespace UMS.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-
-        [Authorize]
+        
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetLeaveRequests()
+        public async Task<IActionResult> GetLeaveRequests([FromQuery] RequestParams requestParams)
         {
-            try
-            {
-                var leaveRequets = await _unitOfWork.LeaveRequests.GetAll();
-                var results = _mapper.Map<IList<LeaveRequestDto>>(leaveRequets);
-                return Ok(results);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(GetLeaveRequests)}");
-                return StatusCode(500, "Internal Server Error. Please try again later.");
-            }
+            var leaveRequets = await _unitOfWork.LeaveRequests.GetAllPaged(requestParams);
+            var results = _mapper.Map<IList<LeaveRequestDto>>(leaveRequets);
+            return Ok(results);
         }
 
         [HttpGet("{id:int}", Name = "GetLeaveRequest")]
@@ -51,17 +42,9 @@ namespace UMS.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLeaveRequest(int id)
         {
-            try
-            {
-                var leaveRequet = await _unitOfWork.LeaveRequests.Get(e => e.Id == id);
-                var result = _mapper.Map<LeaveRequestDto>(leaveRequet);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(GetLeaveRequests)}");
-                return StatusCode(500, "Internal Server Error. Please try again later.");
-            }
+            var leaveRequet = await _unitOfWork.LeaveRequests.Get(e => e.Id == id);
+            var result = _mapper.Map<LeaveRequestDto>(leaveRequet);
+            return Ok(result);
         }
 
         [HttpPost]
@@ -76,21 +59,13 @@ namespace UMS.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
-            {
-                var leaveRequest = _mapper.Map<LeaveRequest>(leaveRequestDto);
-                leaveRequest.LeaveStatusId = 3;
+            var leaveRequest = _mapper.Map<LeaveRequest>(leaveRequestDto);
+            leaveRequest.LeaveStatusId = 3;
 
-                await _unitOfWork.LeaveRequests.Insert(leaveRequest);
-                await _unitOfWork.Save();
+            await _unitOfWork.LeaveRequests.Insert(leaveRequest);
+            await _unitOfWork.Save();
 
-                return CreatedAtRoute("GetLeaveRequest", new { id = leaveRequest.Id }, leaveRequest);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(CreateLeaveRequest)}");
-                return StatusCode(500, "Internal Server Error. Please try again later.");
-            }
+            return CreatedAtRoute("GetLeaveRequest", new { id = leaveRequest.Id }, leaveRequest);
         }
 
         [Authorize(Roles = "Manager")]
@@ -106,26 +81,18 @@ namespace UMS.Controllers
                 return BadRequest(ModelState);
             }
 
-            try
+            var leaveRequest = await _unitOfWork.LeaveRequests.Get(x => x.Id == leaveRequestDto.Id);
+            if (leaveRequest == null)
             {
-                var leaveRequest = await _unitOfWork.LeaveRequests.Get(x => x.Id == leaveRequestDto.Id);
-                if (leaveRequest == null)
-                {
-                    _logger.LogError($"Invalid UPDATE attempt in {nameof(ReviewLeaveRequest)}");
-                    return BadRequest("Submitted data is invalid.");
-                }
-
-                _mapper.Map(leaveRequestDto, leaveRequest);
-                _unitOfWork.LeaveRequests.Update(leaveRequest);
-                await _unitOfWork.Save();
-
-                return NoContent();
+                _logger.LogError($"Invalid UPDATE attempt in {nameof(ReviewLeaveRequest)}");
+                return BadRequest("Submitted data is invalid.");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Something went wrong in the {nameof(ReviewLeaveRequest)}");
-                return StatusCode(500, "Internal Server Error. Please try again later.");
-            }
+
+            _mapper.Map(leaveRequestDto, leaveRequest);
+            _unitOfWork.LeaveRequests.Update(leaveRequest);
+            await _unitOfWork.Save();
+
+            return NoContent();
         }
     }
 }

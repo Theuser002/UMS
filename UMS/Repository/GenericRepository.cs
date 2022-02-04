@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using UMS.Data;
 using UMS.IRepository;
+using UMS.Models;
+using X.PagedList;
 
 namespace UMS.Repository
 {
@@ -29,6 +31,21 @@ namespace UMS.Repository
         public void DeleteRange(IEnumerable<T> entities)
         {
             _db.RemoveRange(entities);
+        }
+
+        public async Task<IPagedList<T>> GetAllPaged(RequestParams requestParams, List<string> includes = null)
+        {
+            IQueryable<T> query = _db;
+            
+            if (includes != null)
+            {
+                foreach (var includeProperty in includes)
+                {
+                    query = query.Include(includeProperty);
+                }
+            }
+            
+            return await query.AsNoTracking().ToPagedListAsync(requestParams.PageNumber, requestParams.PageSize);
         }
 
         public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
