@@ -17,16 +17,19 @@ namespace UMS.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<ApiUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger<AccountController> _logger;
         private readonly IMapper _mapper;
         private readonly IAuthManager _authManager;
 
-        public AccountController(UserManager<ApiUser> userManager,
+        public AccountController(UserManager<ApiUser> userManager, 
+            RoleManager<IdentityRole> roleManager,
             ILogger<AccountController> logger, 
             IMapper mapper, 
             IAuthManager authManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _logger = logger;
             _mapper = mapper;
             _authManager = authManager;
@@ -41,11 +44,11 @@ namespace UMS.Controllers
         {
             _logger.LogInformation($"Registration attempt for {createUserDto.Email}");
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || !await _roleManager.RoleExistsAsync(createUserDto.Role))
             {
                 return BadRequest(ModelState);
             }
-
+            
             var newUser = _mapper.Map<ApiUser>(createUserDto);
             newUser.UserName = createUserDto.Email;
             var createUser = await _userManager.CreateAsync(newUser, createUserDto.Password);

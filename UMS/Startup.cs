@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreRateLimit;
 using UMS.Configurations;
 using UMS.Data;
 using UMS.IRepository;
@@ -36,7 +37,10 @@ namespace UMS
             services.AddDbContext<DatabaseContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("sqlServer"))
             );
-
+            services.AddMemoryCache();
+            services.ConfigureRateLimiting();
+            services.ConfigureHttpCacheHeaders();
+            services.AddHttpContextAccessor();
             services.AddAuthentication();
             services.ConfigureIdentity();
             services.ConfigureJwt(Configuration);
@@ -61,7 +65,10 @@ namespace UMS
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UMS", Version = "v1" });
             });
 
-            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            services.AddControllers()
+                .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            
+            services.ConfigureVersioning();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +84,9 @@ namespace UMS
             app.ConfigureExceptionHandler();
             app.UseHttpsRedirection();
             app.UseCors("AllowAll");
+            app.UseResponseCaching();
+            app.UseHttpCacheHeaders();
+            app.UseIpRateLimiting();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
