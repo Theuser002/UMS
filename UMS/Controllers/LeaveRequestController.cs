@@ -32,7 +32,7 @@ namespace UMS.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetLeaveRequests([FromQuery] RequestParams requestParams)
         {
-            var leaveRequets = await _unitOfWork.LeaveRequests.GetAllPaged(requestParams);
+            var leaveRequets = await _unitOfWork.LeaveRequests.GetAllPaged(requestParams, new List<string>{"LeaveType", "LeaveStatus"});
             var results = _mapper.Map<IList<LeaveRequestDto>>(leaveRequets);
             return Ok(results);
         }

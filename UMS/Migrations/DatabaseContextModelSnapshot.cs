@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UMS.Data;
 
@@ -15,33 +14,30 @@ namespace UMS.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.13")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.13");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
 
@@ -49,21 +45,21 @@ namespace UMS.Migrations
                         new
                         {
                             Id = "c91e2715-f6d1-4865-9c91-48210911fbba",
-                            ConcurrencyStamp = "e4d96ba0-ffa0-4f5c-8926-9bd0843281f5",
+                            ConcurrencyStamp = "a4e6eba2-43c4-4e7c-8a4b-56ecd846cfd0",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "3d4dc1f7-1b8d-46de-8904-1143669bb93c",
-                            ConcurrencyStamp = "b79d8bb0-bafb-4b9c-919a-73be20f64edd",
+                            ConcurrencyStamp = "93f89d31-92fb-4c7d-99a6-9b8735b7dfea",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
                             Id = "7452daaf-ebe8-49c1-a1ee-59e65ca6f54f",
-                            ConcurrencyStamp = "9af6610f-bb57-4110-9a50-5fb4dd7b5bfa",
+                            ConcurrencyStamp = "b5bee6c2-f327-4cbe-96ae-2df66d3e0fc8",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -73,18 +69,17 @@ namespace UMS.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -97,18 +92,17 @@ namespace UMS.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -120,17 +114,17 @@ namespace UMS.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -142,10 +136,10 @@ namespace UMS.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -174,16 +168,16 @@ namespace UMS.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
@@ -193,69 +187,69 @@ namespace UMS.Migrations
             modelBuilder.Entity("UMS.Data.ApiUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("AccessFailedCount")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -264,8 +258,7 @@ namespace UMS.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
 
@@ -274,7 +267,7 @@ namespace UMS.Migrations
                         {
                             Id = "1c3b39f2-60d8-4eb0-8bfc-8c988f97fa7c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "281dc731-3755-4c0e-bc68-9cb073ab39b0",
+                            ConcurrencyStamp = "333a346a-7f53-4bb9-b14c-87d1dc998974",
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "john@example.com",
                             EmailConfirmed = false,
@@ -283,10 +276,10 @@ namespace UMS.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "JOHN@EXAMPLE.COM",
                             NormalizedUserName = "JOHN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEH8lr3ZYXe39cFnHJ9MxFzKYbP8o9DNgCI1WHqz/n/wnAsJpgFl0FDom9srtXesvgg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECpct+Zio/BMswR5aZaUKVaV/BYc+pYMBDQ9t+62OOAmmiaDp0YKOq0TpGoNEDIWWA==",
                             PhoneNumber = "0772556545",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "26511aa8-0abf-4723-92ad-a824c3d489be",
+                            SecurityStamp = "98980429-5a60-4633-8a67-0fb0bb114822",
                             TwoFactorEnabled = false,
                             UserName = "john@example.com"
                         },
@@ -294,7 +287,7 @@ namespace UMS.Migrations
                         {
                             Id = "b3c91fd5-bac2-4ec9-a049-fa4a9a2014e1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "12463d29-5db7-48fd-a066-7dd069833167",
+                            ConcurrencyStamp = "1299605d-b66f-4169-8c99-512b2c5d0d31",
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "kate@example.com",
                             EmailConfirmed = false,
@@ -303,10 +296,10 @@ namespace UMS.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KATE@EXAMPLE.COM",
                             NormalizedUserName = "KATE@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEI8GbzKUXXwaANx3MUmg/Yg87FdLT/TQM7d+fmRxCjPFSsrWFDiQc5wkTnjuZ8Eakw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJUiExrXa0pq95kEnHcA9fTu68uXCQQ2CukCTWRxMf4UC0ry7AetOoZIzNQXV2LJwg==",
                             PhoneNumber = "0712778595",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9d799e01-3a30-4228-8c0b-475c741cc3c4",
+                            SecurityStamp = "83ff1308-bdb9-4867-a10e-5b6a845018cf",
                             TwoFactorEnabled = false,
                             UserName = "kate@example.com"
                         },
@@ -314,7 +307,7 @@ namespace UMS.Migrations
                         {
                             Id = "01a43ed8-1651-4bc4-b3f4-97a22307251f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "43d97f8d-77bd-4080-bf84-e457e3755faa",
+                            ConcurrencyStamp = "98ba1e3e-9e82-489d-9b97-81c110240e53",
                             DateOfBirth = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "sam@example.com",
                             EmailConfirmed = false,
@@ -323,10 +316,10 @@ namespace UMS.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SAM@EXAMPLE.COM",
                             NormalizedUserName = "SAM@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHT4r5Rce0UPAl2QQ2keoLwLuqKOPYqHEsFTzD16i1U8YAli3uEi9Xi04m10w6HXGw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL8GE9vfvdK1pzX6A230cx3IegTWeysQoxs+1lcQd4gd1g/jXW+3nHJaXOGpUkJ1Pg==",
                             PhoneNumber = "0751223565",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "723055f0-a39a-44c1-8e18-14e13753e0b8",
+                            SecurityStamp = "f10e77fe-7f06-4890-9d44-869387f311f7",
                             TwoFactorEnabled = false,
                             UserName = "sam@example.com"
                         });
@@ -335,19 +328,19 @@ namespace UMS.Migrations
             modelBuilder.Entity("UMS.Data.LeaveAllocation", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<double>("TotalAmount")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<double>("UsedAmount")
-                        .HasColumnType("float");
+                        .HasColumnType("REAL");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Year")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -358,7 +351,7 @@ namespace UMS.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c630a421-c00d-4ddd-b3e7-6c418292ad44",
+                            Id = "5a705d4b-0409-4403-9c38-0c9cd8585611",
                             TotalAmount = 20.0,
                             UsedAmount = 1.0,
                             UserId = "b3c91fd5-bac2-4ec9-a049-fa4a9a2014e1",
@@ -370,29 +363,28 @@ namespace UMS.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("End")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("LeaveStatusId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("LeaveTypeId")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Note")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Remarks")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Start")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -408,34 +400,34 @@ namespace UMS.Migrations
                         new
                         {
                             Id = 1,
-                            End = new DateTime(2022, 2, 4, 13, 48, 39, 777, DateTimeKind.Local).AddTicks(8384),
+                            End = new DateTime(2022, 2, 19, 7, 35, 57, 461, DateTimeKind.Local).AddTicks(7494),
                             LeaveStatusId = 1,
                             LeaveTypeId = 1,
                             Note = "I am down with fever.",
                             Remarks = "Approved",
-                            Start = new DateTime(2022, 2, 3, 13, 48, 39, 776, DateTimeKind.Local).AddTicks(8941),
+                            Start = new DateTime(2022, 2, 18, 7, 35, 57, 459, DateTimeKind.Local).AddTicks(9401),
                             UserId = "b3c91fd5-bac2-4ec9-a049-fa4a9a2014e1"
                         },
                         new
                         {
                             Id = 2,
-                            End = new DateTime(2022, 2, 18, 13, 48, 39, 778, DateTimeKind.Local).AddTicks(349),
+                            End = new DateTime(2022, 3, 5, 7, 35, 57, 461, DateTimeKind.Local).AddTicks(9425),
                             LeaveStatusId = 2,
                             LeaveTypeId = 3,
                             Note = "I am going on a trip to Maldives",
                             Remarks = "Denied",
-                            Start = new DateTime(2022, 3, 15, 13, 48, 39, 778, DateTimeKind.Local).AddTicks(337),
+                            Start = new DateTime(2022, 3, 30, 7, 35, 57, 461, DateTimeKind.Local).AddTicks(9414),
                             UserId = "b3c91fd5-bac2-4ec9-a049-fa4a9a2014e1"
                         },
                         new
                         {
                             Id = 3,
-                            End = new DateTime(2022, 2, 5, 13, 48, 39, 778, DateTimeKind.Local).AddTicks(354),
+                            End = new DateTime(2022, 2, 20, 7, 35, 57, 461, DateTimeKind.Local).AddTicks(9430),
                             LeaveStatusId = 3,
                             LeaveTypeId = 2,
                             Note = "Need couple of day off for personal reasons",
                             Remarks = "Approved",
-                            Start = new DateTime(2022, 2, 8, 13, 48, 39, 778, DateTimeKind.Local).AddTicks(353),
+                            Start = new DateTime(2022, 2, 23, 7, 35, 57, 461, DateTimeKind.Local).AddTicks(9429),
                             UserId = "b3c91fd5-bac2-4ec9-a049-fa4a9a2014e1"
                         });
                 });
@@ -444,11 +436,10 @@ namespace UMS.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -476,11 +467,10 @@ namespace UMS.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
