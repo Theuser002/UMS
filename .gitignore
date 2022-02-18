@@ -363,3 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 /UMS/ums.db-wal
 /UMS/ums.db-shm
+
+# JetBrains
+.idea/
